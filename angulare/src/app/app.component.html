@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<header> 
+<ul class="menuInicial">
+    <li><a [routerLink]="['/sobre-mi']" [routerLinkActive]="['activated']">Sobre mi</a></li>
+    <li><a [routerLink]="['/proyectos']" [routerLinkActive]="['activated']">Proyectos</a></li>
+    <li id="logo"><a href="#">DL</a></li>
+    <li><a [routerLink]="['/crear-proyecto']" [routerLinkActive]="['activated']">Crear Proyecto</a></li>
+    <li><a [routerLink]="['/contacto']" [routerLinkActive]="['activated']">Contacto</a></li>
+</ul>
+</header>
+<section id="content">
+    <router-outlet></router-outlet>
+</section>
+
+<footer>
+   Sígueme en mis redes sociales
+    <div class="columnasFooter">
+        <div class="colIzquierdaFooter">
+            <a href="https://www.instagram.com/diego_oswld/"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="colCentralFooter">
+            <a href="https://www.facebook.com/diegooswaldo.logronoharo"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="colDerechaFooter">
+            <a href="https://www.linkedin.com/in/diego-oswaldo-logroño-haro-54560a258/"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</footer>

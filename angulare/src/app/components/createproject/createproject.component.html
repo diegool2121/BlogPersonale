@@ -1,0 +1,46 @@
+
+<div class="formularioCentrado">
+<div class="container" *ngIf="project">
+    <h2>{{title}}</h2>
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit(project)">
+        <p>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" required [(ngModel)]="project.name" #name="ngModel">
+            <span class="advertenciasFormularios" *ngIf="name.touched && !name.valid">Ingrese nombre al proyecto</span>
+        </p>
+        <p>
+            <label for="description">Descripción</label>
+            <textarea name="description" required [(ngModel)]="project.description" #description="ngModel"></textarea>
+            <span class="advertenciasFormularios" *ngIf="description.touched && !description.valid">Es necesario una descripción al proyecto</span>
+        </p>
+        <p>
+            <label for="category">Categoría</label>
+            <input type="text" id="category" name="category" required [(ngModel)]="project.category" #category="ngModel">
+            <span class="advertenciasFormularios" *ngIf="category.touched && !category.valid">Ingrese la categoría a la que pertenece el proyecto</span>
+        </p>
+        <p>
+            <label for="year">Año de lanzamiento</label>
+            <input type="number" name="year" required [(ngModel)]="project.year" #year="ngModel">
+        </p>
+        <p>
+            <label for="langs">Lenguajes Utilizados</label>
+            <input type="text" name="langs" required [(ngModel)]="project.langs" #langs="ngModel">
+            <span class="advertenciasFormularios" *ngIf="langs.touched && !langs.valid">Ingrese los lenguajes utilizados</span>
+        </p>
+        <div>
+            <label for="image">Imagen del proyecto</label><br>
+            <span class="image" *ngIf="project.image">
+                <img src="{{ url + 'get-image/' + project.image }}" style="width:100px" alt="Imagen del proyecto">
+            </span> <br>
+            <input type="file" id="image" name="image" placeholder="Subir Imagen" (change)="fileChangeEvent($event)">
+        </div>        
+        <input type="submit" value="Enviar" [disabled]="!projectForm.form.valid">
+        <div class="message success" *ngIf="status == 'success'">
+            El proyecto se ha creado correctamente, puedes <a [routerLink]="['/proyecto/' + save_project._id]">Verlo Aquí</a>
+        </div>
+        <div class="message failed" *ngIf="status == 'failed'">
+            El proyecto no se ha podido crear
+        </div>
+    </form>
+</div>
+</div>
